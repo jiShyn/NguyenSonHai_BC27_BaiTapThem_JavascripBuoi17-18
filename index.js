@@ -46,7 +46,7 @@ function minPositiveNum() {
    var minPositiveNum = min(positiveNums);
 
    if (!minPositiveNum) {
-      res.innerHTML += `<br>Không có số dương gòi !!!`;
+      res.innerHTML += `<br>Mảng không có số dương gòi !!!`;
    } else {
       res.innerHTML += `<br>Số dương nhỏ nhất là: ${minPositiveNum}`;
    }
@@ -60,7 +60,7 @@ function lastEvenNum() {
          return;
       }
    }
-   res.innerHTML += `<br>Không có số chẵn!!!`;
+   res.innerHTML += `<br>Mảng không có số chẵn!!!`;
 }
 
 // 6. Đổi chỗ
@@ -96,27 +96,38 @@ function sortUp() {
       return a - b;
    });
 
-   res.innerHTML += `<br>Sắp xếp tăng dần là: ${nums.join(", ")}`;
+   res.innerHTML += `<br>Mảng sắp xếp tăng dần là: ${nums.join(", ")}`;
 }
 
 // 8. Số nguyên tố đầu tiên
 function firstPrimeNum() {
+   var firstPrime = -1;
    for (var i = 0; i < nums.length; i++) {
-      if (nums[i] === 2) {
-         res.innerHTML += `<br>Số nguyên tố đầu tiên là: ${nums[i]}`;
-         return;
-      } else {
-         for (var j = 2; j < nums[i]; j++) {
-            if (nums[i] % j === 0) {
-               break;
-            } else {
-               res.innerHTML += `<br>Số nguyên tố đầu tiên là: ${nums[i]}`;
-               return;
-            }
-         }
-      }
+      var checkPrime = isPrime(nums[i])
+      if (checkPrime) {
+         firstPrime = nums[i];
+         break;
+      } 
    }
-   res.innerHTML += `<br>Mảng không có số nguyên tố rùi.`;
+
+   res.innerHTML += `<br>Số nguyên tố đầu tiên là: ${firstPrime}`;
+
+   // for (var i = 0; i < nums.length; i++) {
+   //    if (nums[i] === 2) {
+   //       res.innerHTML += `<br>Số nguyên tố đầu tiên là: ${nums[i]}`;
+   //       return;
+   //    } else {
+   //       for (var j = 2; j < nums[i]; j++) {
+   //          if (nums[i] % j === 0) {
+   //             break;
+   //          } else {
+   //             res.innerHTML += `<br>Số nguyên tố đầu tiên là: ${nums[i]}`;
+   //             return;
+   //          }
+   //       }
+   //    }
+   // }
+   // res.innerHTML += `<br>Mảng không có số nguyên tố rùi.`;
 }
 
 // 9. Đếm số nguyên
@@ -178,4 +189,27 @@ function countNegative(nums) {
       }
    }
    return count;
+}
+
+//hàm kiểm tra số nguyên tố
+function isPrime(num) {
+   var isPrime = true;
+   if (num < 2) {
+      isPrime = false;
+      return isPrime;
+   }
+
+   if (num === 2) {
+      isPrime = false;
+      return isPrime;
+   }
+
+   for (var i = 2; i < num - 1; i++) {
+      if (num % i === 0) {
+         isPrime = false;
+         break;
+      }
+   }
+
+   return isPrime;
 }
