@@ -65,11 +65,10 @@ function lastEvenNum() {
 
 // 6. Đổi chỗ
 function swap() {
-   //value input người dùng nhập là số thứ tự => chuyển về chỉ mục tương ứng bằng cách -1.
+   //value input người dùng nhập là số thứ tự => chuyển về chỉ mục (index) tương ứng bằng cách -1.
    var index1 = +document.getElementById("index1").value - 1;
    var index2 = +document.getElementById("index2").value - 1;
 
-   console.log(nums.length);
    if (
       0 <= index1 &&
       index1 < nums.length &&
@@ -84,7 +83,7 @@ function swap() {
       // nums[index1] = nums[index2];
       // nums[index2] = x;
 
-      res.innerHTML += `<br>Mảng mới sau khi đổi là: ${nums}`;
+      res.innerHTML += `<br>Mảng mới sau khi đổi là: ${nums.join(", ")}`;
    } else {
       alert("Nhập vị trí 2 số cần đổi chỗ thích hợp nhé bạn iu !!!");
    }
@@ -111,23 +110,6 @@ function firstPrimeNum() {
    }
 
    res.innerHTML += `<br>Số nguyên tố đầu tiên là: ${firstPrime}`;
-
-   // for (var i = 0; i < nums.length; i++) {
-   //    if (nums[i] === 2) {
-   //       res.innerHTML += `<br>Số nguyên tố đầu tiên là: ${nums[i]}`;
-   //       return;
-   //    } else {
-   //       for (var j = 2; j < nums[i]; j++) {
-   //          if (nums[i] % j === 0) {
-   //             break;
-   //          } else {
-   //             res.innerHTML += `<br>Số nguyên tố đầu tiên là: ${nums[i]}`;
-   //             return;
-   //          }
-   //       }
-   //    }
-   // }
-   // res.innerHTML += `<br>Mảng không có số nguyên tố rùi.`;
 }
 
 // 9. Đếm số nguyên
@@ -200,7 +182,6 @@ function isPrime(num) {
    }
 
    if (num === 2) {
-      isPrime = false;
       return isPrime;
    }
 
